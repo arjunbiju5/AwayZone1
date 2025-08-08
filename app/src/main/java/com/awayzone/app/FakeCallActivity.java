@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.Locale;
@@ -43,6 +44,7 @@ public class FakeCallActivity extends Activity {
         tvTimer = findViewById(R.id.tvTimer);
         Button btnAccept = findViewById(R.id.btnAccept);
         Button btnDecline = findViewById(R.id.btnDecline);
+        ImageButton btnHangup = findViewById(R.id.btnHangup);
 
         // Pick random caller
         Random rand = new Random();
@@ -58,10 +60,11 @@ public class FakeCallActivity extends Activity {
 
         btnAccept.setOnClickListener(v -> {
             callActive = true;
-            tvCaller.setText( caller);
+            tvCaller.setText(caller);
             tvTimer.setVisibility(View.VISIBLE);
             btnAccept.setVisibility(View.GONE);
             btnDecline.setVisibility(View.GONE);
+            btnHangup.setVisibility(View.VISIBLE); // show hang up button
 
             if (ringtone != null && ringtone.isPlaying()) {
                 ringtone.stop();
@@ -78,6 +81,13 @@ public class FakeCallActivity extends Activity {
                 ringtone.release();
             }
             finish(); // Close screen
+        });
+
+        btnHangup.setOnClickListener(v -> {
+            if (callActive) {
+                timerHandler.removeCallbacks(timerRunnable);
+            }
+            finish();
         });
     }
 

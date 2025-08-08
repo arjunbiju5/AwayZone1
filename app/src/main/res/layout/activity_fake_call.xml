@@ -52,4 +52,18 @@
         android:backgroundTint="#F44336"
         android:textColor="#FFFFFF" />
 
+    <!-- Hangup Button (hidden initially) -->
+    <ImageButton
+        android:id="@+id/btnHangup"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/red_circle"
+        android:src="@drawable/ic_call_end"
+        android:scaleType="centerInside"
+        android:visibility="gone"
+        android:contentDescription="Hang Up" />
+
 </RelativeLayout>
