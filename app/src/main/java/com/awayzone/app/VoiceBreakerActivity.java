@@ -138,15 +138,37 @@ public class VoiceBreakerActivity extends AppCompatActivity {
     }
 
     // Distortion effect: reduce bit depth + add noise
+    // Glitchy distortion: cut chunks + insert silence + heavy bit crush
     private void distortAudio(byte[] buffer, int read) {
         for (int i = 0; i < read; i += 2) {
             short sample = (short) ((buffer[i] & 0xFF) | (buffer[i + 1] << 8));
-            sample = (short) (sample >> 2 << 2); // bit crush
-            sample += (short) (Math.random() * 500 - 250); // noise
+
+            // 1. Heavy bit crush (remove detail)
+            sample = (short) (sample >> 5 << 5);
+
+            // 2. Add big random noise occasionally
+            if (Math.random() < 0.3) { // 30% of samples
+                sample += (short) (Math.random() * 30000 - 15000);
+            }
+
+            // 3. Randomly cut audio to silence
+            if (Math.random() < 0.1) { // 10% chance of silence
+                sample = 0;
+            }
+
+            // 4. Random "dropout" blocks
+            if (Math.random() < 0.02) { // 2% chance to drop next ~20 samples
+                for (int j = 0; j < 40 && i + j * 2 < read; j++) {
+                    buffer[i + j * 2] = 0;
+                    buffer[i + j * 2 + 1] = 0;
+                }
+            }
+
             buffer[i] = (byte) (sample & 0xFF);
             buffer[i + 1] = (byte) ((sample >> 8) & 0xFF);
         }
     }
+
 
     // WAV header helpers
     private void writeWavHeader(FileOutputStream out, int sampleRate, int channels, int bitsPerSample) throws IOException {
