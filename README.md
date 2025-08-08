@@ -1,2 +1,2 @@
 # AwayZone
- A multi-feature Android app for anti-social situations
+ A multi-feature Android app for anti-social situations.
