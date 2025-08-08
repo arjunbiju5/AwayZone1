@@ -1,24 +1,51 @@
 package com.awayzone.app;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+public class GlitchScreenActivity extends Activity {
 
-public class GlitchScreenActivity extends AppCompatActivity {
+    View root;
+    TextView glitchText;
+    Handler handler = new Handler();
+
+    Runnable glitchEffect = new Runnable() {
+        @Override
+        public void run() {
+            float randX = (float) (Math.random() * 2);
+            float randY = (float) (Math.random() * 2);
+            root.setScaleX(randX);
+            root.setScaleY(randY);
+            root.setRotation((float) (Math.random() * 360));
+            handler.postDelayed(() -> {
+                root.setScaleX(1f);
+                root.setScaleY(1f);
+                root.setRotation(0);
+            }, 100);
+            handler.postDelayed(this, 400);
+        }
+    };
+
+    Runnable showCrash = () -> glitchText.setText("Phone Not Responding...");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_glitch_screen);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+        root = findViewById(android.R.id.content);
+        glitchText = findViewById(R.id.tvGlitch);
+
+        handler.post(glitchEffect);
+        handler.postDelayed(showCrash, 5000);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacksAndMessages(null);
     }
 }
