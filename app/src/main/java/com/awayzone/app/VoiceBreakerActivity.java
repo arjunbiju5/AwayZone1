@@ -147,8 +147,8 @@ public class VoiceBreakerActivity extends AppCompatActivity {
     private void distortAudio(byte[] buffer, int read) {
         long now = System.currentTimeMillis();
 
-        // Toggle mute phase every 1.5s
-        if (now - lastMuteTime > 1500) {
+        // Toggle mute phase every 1s
+        if (now - lastMuteTime > 1000) {
             isMutePhase = true;
             lastMuteTime = now;
         }
