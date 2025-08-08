@@ -1,24 +1,31 @@
 package com.awayzone.app;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+public class GhostModeActivity extends Activity {
 
-public class GhostModeActivity extends AppCompatActivity {
+    private TextView tvGhostMessage;
+    private Button btnCloseApp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_ghost_mode);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+        tvGhostMessage = findViewById(R.id.tvGhostMessage);
+        btnCloseApp = findViewById(R.id.btnCloseApp);
+
+        // Simulate app crash screen delay
+        new Handler().postDelayed(() -> {
+            tvGhostMessage.setVisibility(View.VISIBLE);
+            btnCloseApp.setVisibility(View.VISIBLE);
+        }, 3000); // show after 3 seconds
+
+        btnCloseApp.setOnClickListener(v -> finish());
     }
 }

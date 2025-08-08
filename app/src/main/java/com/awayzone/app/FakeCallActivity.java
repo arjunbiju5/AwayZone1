@@ -58,7 +58,7 @@ public class FakeCallActivity extends Activity {
 
         btnAccept.setOnClickListener(v -> {
             callActive = true;
-            tvCaller.setText("Call with " + caller);
+            tvCaller.setText( caller);
             tvTimer.setVisibility(View.VISIBLE);
             btnAccept.setVisibility(View.GONE);
             btnDecline.setVisibility(View.GONE);

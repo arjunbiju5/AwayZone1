@@ -18,14 +18,12 @@ public class MainActivity extends AppCompatActivity {
         Button btnGlitchScreen = findViewById(R.id.btnGlitchScreen);
         Button btnExcuseGenerator = findViewById(R.id.btnExcuseGenerator);
         Button btnGhostMode = findViewById(R.id.btnGhostMode);
-        Button btnNoiseSimulator = findViewById(R.id.btnNoiseSimulator);
         Button btnVoiceBreak = findViewById(R.id.btnVoiceBreak);
 
         btnFakeCall.setOnClickListener(v -> startActivity(new Intent(this, FakeCallActivity.class)));
         btnGlitchScreen.setOnClickListener(v -> startActivity(new Intent(this, GlitchScreenActivity.class)));
         btnExcuseGenerator.setOnClickListener(v -> startActivity(new Intent(this, ExcuseGeneratorActivity.class)));
         btnGhostMode.setOnClickListener(v -> startActivity(new Intent(this, GhostModeActivity.class)));
-        btnNoiseSimulator.setOnClickListener(v -> startActivity(new Intent(this, NoiseSimulatorActivity.class)));
-        btnVoiceBreak.setOnClickListener(v -> startActivity(new Intent(this, VoiceBreakActivity.class)));
+        
     }
 }

@@ -1,50 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp"
-    android:gravity="center">
+    android:background="#FF000000"
+    android:gravity="center"
+    android:padding="24dp">
 
-    <Button
+    <!-- App Icon -->
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/skull"
+        android:contentDescription="App Icon" />
+
+    <!-- App Title -->
+    <TextView
+        android:id="@+id/tvAppTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AwayZone"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/delius_regular"
+        android:layout_marginBottom="32dp" />
+
+    <!-- Buttons -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnFakeCall"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="📞 Fake Call"
-        android:layout_marginBottom="10dp" />
+        android:text="Fake Call"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="24dp"
+        android:backgroundTint="#4A0000"
+        android:fontFamily="@font/winky_rough"
+        android:layout_marginBottom="16dp" />
 
-    <Button
-        android:id="@+id/btnGlitchScreen"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="⚡ Glitch Screen"
-        android:layout_marginBottom="10dp" />
 
-    <Button
-        android:id="@+id/btnExcuseGenerator"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="🙅 Excuse Generator"
-        android:layout_marginBottom="10dp" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnGhostMode"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="👻 Ghost Mode"
-        android:layout_marginBottom="10dp" />
+        android:text="Phone Crash"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="24dp"
+        android:backgroundTint="#4A0000"
+        android:fontFamily="@font/winky_rough"
+        android:layout_marginBottom="16dp" />
 
-    <Button
-        android:id="@+id/btnNoiseSimulator"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnGlitchScreen"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="🔊 Noise Simulator"
-        android:layout_marginBottom="10dp" />
+        android:text="Glitch Screen"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="24dp"
+        android:backgroundTint="#4A0000"
+        android:fontFamily="@font/winky_rough"
+        android:layout_marginBottom="16dp" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnVoiceBreak"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="🎤 Voice Break Effect" />
+        android:text="Voice Break"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="24dp"
+        android:backgroundTint="#4A0000"
+        android:fontFamily="@font/winky_rough"
+        android:layout_marginBottom="16dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnExcuseGenerator"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AI Excuse Generator"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="24dp"
+        android:backgroundTint="#4A0000"
+        android:fontFamily="@font/winky_rough" />
 
 </LinearLayout>
