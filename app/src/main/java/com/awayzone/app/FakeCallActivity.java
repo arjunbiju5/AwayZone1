@@ -44,7 +44,7 @@ public class FakeCallActivity extends Activity {
         Button btnAccept = findViewById(R.id.btnAccept);
         Button btnDecline = findViewById(R.id.btnDecline);
 
-        // Pick a random caller
+        // Pick random caller
         Random rand = new Random();
         String caller = callers[rand.nextInt(callers.length)];
         tvCaller.setText(caller + " is calling...");
@@ -68,7 +68,6 @@ public class FakeCallActivity extends Activity {
                 ringtone.release();
             }
 
-            // Start timer
             secondsElapsed = 0;
             timerHandler.postDelayed(timerRunnable, 1000);
         });
@@ -78,7 +77,7 @@ public class FakeCallActivity extends Activity {
                 ringtone.stop();
                 ringtone.release();
             }
-            finish(); // Close the screen
+            finish(); // Close screen
         });
     }
 

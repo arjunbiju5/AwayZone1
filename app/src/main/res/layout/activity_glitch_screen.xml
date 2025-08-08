@@ -1,13 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/glitchScreenLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000">
 
+    <!-- Glitch Image Overlay -->
+    <ImageView
+        android:id="@+id/imgGlitch"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/glitch_effect"
+        android:scaleType="fitXY"
+        android:alpha="1.0" />
+
+    <!-- Status Text -->
     <TextView
-        android:id="@+id/tvGlitch"
-        android:layout_gravity="center"
-        android:text="GLITCH INCOMING..."
-        android:textColor="#00FF00"
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone Not Responding..."
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:textColor="#FF0000" />
+
 </FrameLayout>
