@@ -2,31 +2,49 @@
     android:id="@+id/ghostRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CC000000"
-    android:padding="24dp">
+    android:background="#CC000000">
 
-    <TextView
-        android:id="@+id/tvGhostMessage"
-        android:layout_width="wrap_content"
+    <!-- Popup Card -->
+    <LinearLayout
+        android:id="@+id/popupContainer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Phone isn't responding.\nDo you want to close it?"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:gravity="center"
-        android:visibility="gone"
         android:layout_centerInParent="true"
-        android:textAlignment="center" />
+        android:layout_margin="32dp"
+        android:orientation="vertical"
+        android:background="@drawable/bg_popup_card"
+        android:padding="20dp">
 
-    <Button
-        android:id="@+id/btnCloseApp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Close app"
-        android:visibility="gone"
-        android:layout_below="@id/tvGhostMessage"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="#D32F2F"
-        android:textColor="#FFFFFF" />
+        <!-- Crash Message -->
+        <TextView
+            android:id="@+id/tvGhostMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone isn't responding.\nDo you want to close it?"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:visibility="gone" />
 
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#444"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Close Button -->
+        <Button
+            android:id="@+id/btnCloseApp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Close app"
+            android:visibility="gone"
+            android:backgroundTint="#B71C1C"
+            android:textColor="#FFFFFF"
+            android:textAllCaps="false"
+            android:padding="10dp" />
+
+    </LinearLayout>
 </RelativeLayout>

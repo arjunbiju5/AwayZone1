@@ -20,11 +20,11 @@ public class GhostModeActivity extends Activity {
         tvGhostMessage = findViewById(R.id.tvGhostMessage);
         btnCloseApp = findViewById(R.id.btnCloseApp);
 
-        // Simulate app crash screen delay
+        // Simulate crash delay
         new Handler().postDelayed(() -> {
             tvGhostMessage.setVisibility(View.VISIBLE);
             btnCloseApp.setVisibility(View.VISIBLE);
-        }, 3000); // show after 3 seconds
+        }, 3000);
 
         btnCloseApp.setOnClickListener(v -> finish());
     }
