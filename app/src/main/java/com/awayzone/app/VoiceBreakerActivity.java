@@ -144,35 +144,32 @@ public class VoiceBreakerActivity extends AppCompatActivity {
         for (int i = 0; i < read; i += 2) {
             short sample = (short) ((buffer[i] & 0xFF) | (buffer[i + 1] << 8));
 
-            // 1. Mild bit crush (keeps voice but less detail)
-            sample = (short) (sample >> 2 << 2);
+            // 1. Mild bit crush (retain speech shape but lose fine detail)
+            short crushed = (short) (sample >> 1 << 1);
 
-            // 2. Random long silent gaps (~5% of samples, ~200ms silence)
+            // 2. Random short glitches (rare, so voice survives)
+            if (Math.random() < 0.01) { // ~1% glitch rate
+                crushed = (short) (Math.random() * Short.MAX_VALUE - Short.MAX_VALUE / 2);
+            }
+
+            // 3. Occasional tiny dropouts (~0.5% of samples)
             if (Math.random() < 0.005) {
-                int gapLength = 2000; // ~200ms at 44.1kHz mono
-                for (int j = 0; j < gapLength && i + j * 2 < read; j++) {
-                    buffer[i + j * 2] = 0;
-                    buffer[i + j * 2 + 1] = 0;
-                }
+                crushed = 0;
             }
 
-            // 3. Small dropout blocks (~2% of samples)
-            if (Math.random() < 0.02) {
-                for (int j = 0; j < 40 && i + j * 2 < read; j++) {
-                    buffer[i + j * 2] = 0;
-                    buffer[i + j * 2 + 1] = 0;
-                }
+            // 4. Light random noise overlay (~10% samples)
+            if (Math.random() < 0.1) {
+                crushed += (short) (Math.random() * 500 - 250);
             }
 
-            // 4. Light random noise (~5% samples)
-            if (Math.random() < 0.05) {
-                sample += (short) (Math.random() * 1000 - 500);
-            }
+            // 5. Keep some of original voice mixed with distortion
+            sample = (short) ((sample * 0.6) + (crushed * 0.4));
 
             buffer[i] = (byte) (sample & 0xFF);
             buffer[i + 1] = (byte) ((sample >> 8) & 0xFF);
         }
     }
+
 
 
 
