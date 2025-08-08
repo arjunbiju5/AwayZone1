@@ -22,10 +22,14 @@ public class ExcuseGeneratorActivity extends Activity {
 
     // Predefined list of excuses
     private List<String> excuses = new ArrayList<>(Arrays.asList(
-            "My pet goldfish is practicing for the Olympics, and I'm his designated cheer squad.",
+            "I’m on a strict ‘do nothing and chill’ diet today.",
             "I've accidentally glued myself to the couch in an intense board game marathon.",
-            "My imaginary friend needs emotional support, and he only talks to me.",
+            "My phone battery is at 1%, so I’m officially off the grid.",
             "I'm currently in a staring contest with my reflection, and I'm losing.",
+            "The laundry monster has taken over my room; I’m in battle mode." ,
+            "I’m attending an urgent virtual conference with my blanket and pillow." ,
+            "I’m quarantining with my thoughts—no visitors allowed." ,
+            "I promised my plants I’d check on them—they get clingy." ,
             "My cat just informed me she's planning world domination, and I'm needed for strategic meow-tings."
     ));
 

@@ -139,35 +139,41 @@ public class VoiceBreakerActivity extends AppCompatActivity {
 
     // Distortion effect: reduce bit depth + add noise
     // Glitchy distortion: cut chunks + insert silence + heavy bit crush
+    // Distortion effect: focus on silent breaks + mild glitches
     private void distortAudio(byte[] buffer, int read) {
         for (int i = 0; i < read; i += 2) {
             short sample = (short) ((buffer[i] & 0xFF) | (buffer[i + 1] << 8));
 
-            // 1. Heavy bit crush (remove detail)
-            sample = (short) (sample >> 5 << 5);
+            // 1. Mild bit crush (keeps voice but less detail)
+            sample = (short) (sample >> 2 << 2);
 
-            // 2. Add big random noise occasionally
-            if (Math.random() < 0.3) { // 30% of samples
-                sample += (short) (Math.random() * 30000 - 15000);
+            // 2. Random long silent gaps (~5% of samples, ~200ms silence)
+            if (Math.random() < 0.005) {
+                int gapLength = 2000; // ~200ms at 44.1kHz mono
+                for (int j = 0; j < gapLength && i + j * 2 < read; j++) {
+                    buffer[i + j * 2] = 0;
+                    buffer[i + j * 2 + 1] = 0;
+                }
             }
 
-            // 3. Randomly cut audio to silence
-            if (Math.random() < 0.1) { // 10% chance of silence
-                sample = 0;
-            }
-
-            // 4. Random "dropout" blocks
-            if (Math.random() < 0.02) { // 2% chance to drop next ~20 samples
+            // 3. Small dropout blocks (~2% of samples)
+            if (Math.random() < 0.02) {
                 for (int j = 0; j < 40 && i + j * 2 < read; j++) {
                     buffer[i + j * 2] = 0;
                     buffer[i + j * 2 + 1] = 0;
                 }
             }
 
+            // 4. Light random noise (~5% samples)
+            if (Math.random() < 0.05) {
+                sample += (short) (Math.random() * 1000 - 500);
+            }
+
             buffer[i] = (byte) (sample & 0xFF);
             buffer[i + 1] = (byte) ((sample >> 8) & 0xFF);
         }
     }
+
 
 
     // WAV header helpers
