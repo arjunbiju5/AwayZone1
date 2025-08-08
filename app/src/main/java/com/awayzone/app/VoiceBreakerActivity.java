@@ -140,35 +140,43 @@ public class VoiceBreakerActivity extends AppCompatActivity {
     // Distortion effect: reduce bit depth + add noise
     // Glitchy distortion: cut chunks + insert silence + heavy bit crush
     // Distortion effect: focus on silent breaks + mild glitches
+    // State tracking for mute timing
+    private long lastMuteTime = 0;
+    private boolean isMutePhase = false;
+
     private void distortAudio(byte[] buffer, int read) {
+        long now = System.currentTimeMillis();
+
+        // Toggle mute phase every 1.5s
+        if (now - lastMuteTime > 1500) {
+            isMutePhase = true;
+            lastMuteTime = now;
+        }
+
         for (int i = 0; i < read; i += 2) {
             short sample = (short) ((buffer[i] & 0xFF) | (buffer[i + 1] << 8));
 
-            // 1. Mild bit crush (retain speech shape but lose fine detail)
-            short crushed = (short) (sample >> 1 << 1);
-
-            // 2. Random short glitches (rare, so voice survives)
-            if (Math.random() < 0.01) { // ~1% glitch rate
-                crushed = (short) (Math.random() * Short.MAX_VALUE - Short.MAX_VALUE / 2);
+            // If in mute phase, silence this part
+            if (isMutePhase) {
+                sample = 0;
+            } else {
+                // Mild distortion while preserving voice
+                sample = (short) (sample >> 1 << 1); // light bit crush
+                if (Math.random() < 0.05) { // occasional noise
+                    sample += (short) (Math.random() * 500 - 250);
+                }
             }
-
-            // 3. Occasional tiny dropouts (~0.5% of samples)
-            if (Math.random() < 0.005) {
-                crushed = 0;
-            }
-
-            // 4. Light random noise overlay (~10% samples)
-            if (Math.random() < 0.1) {
-                crushed += (short) (Math.random() * 500 - 250);
-            }
-
-            // 5. Keep some of original voice mixed with distortion
-            sample = (short) ((sample * 0.6) + (crushed * 0.4));
 
             buffer[i] = (byte) (sample & 0xFF);
             buffer[i + 1] = (byte) ((sample >> 8) & 0xFF);
         }
+
+        // End mute phase quickly (~300ms silence)
+        if (isMutePhase && now - lastMuteTime > 300) {
+            isMutePhase = false;
+        }
     }
+
 
 
 
