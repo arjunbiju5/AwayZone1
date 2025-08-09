@@ -1,96 +1,90 @@
-<img width="3188" height="1202" alt="frame (3)" src="https://github.com/user-attachments/assets/517ad8e9-ad22-457d-9538-a9e62d137cd7" />
 
 
-# [Project Name] 🎯
+
+# AwayZone 🎯
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name: BugBiterz
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Team Lead: Lekshmi Hari - NSS College of Engineering, Palakkad
+- Member 2: Arjun Biju - NSS College of Engineering, Palakkad
+
 
 ### Project Description
-[2-3 lines about what your project does]
+Not in the mood? We got your excuse. AwayZone is a quirky yet clever mobile app designed to help you dodge unwanted interactions with style. Packed with features like fake calls, fake app crash, hilarious auto-excuses and glitched screens, it turns social avoidance into a fun, gamified experience.
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+In our always-online world, we’re constantly bombarded with calls, texts, and “urgent” pings—even when we’re in the middle of working, eating, napping, or simply existing in peace. Friends expect instant replies, bosses assume we’re always available, and family thinks “Do Not Disturb” is just a suggestion. The tragedy? There’s no dramatic, over-the-top way to escape without feeling guilty. AwayZone solves this global crisis by giving you hilarious, believable, and utterly unnecessary tools to dodge every social interaction like a pro.
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+AwayZone offers a lighthearted yet innovative approach to managing unwanted digital and social interactions. Through features like customizable fake calls, automated funny excuses, phone crashes, and background noise distortion, it empowers users to create believable scenarios for stepping away from conversations without confrontation. By combining playful creativity with practical tools, AwayZone transforms the act of “being unavailable” into a polished, seamless, and even entertaining experience.
+
+Customizable Fake Calls – Simulate incoming calls to create a natural reason to step away.
+
+Phone Crashes – Trigger a realistic "device malfunction" to make unavailability believable.
+
+Automated Funny Excuses – Generate witty, context-appropriate reasons to exit forced conversations.
+
+Noise Distortion – Introduce simulated background noise and artificial audio glitches to mimic poor network quality or a busy environment, creating a believable reason for disrupted or shortened conversations.
 
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
-
-For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
+-Java
+- Andriod Studio
+- AndroidX Libraries
+- Gradle
+- Material Components for Android
 
 ### Implementation
 For Software:
 # Installation
-[commands]
+1. Prerequisites
+- Android Studio (latest stable version) installed on your system.
+- JDK 8 or above installed and configured.
+- Android device or emulator running Android 8.0 (Oreo) or above.
+2. Installation steps
+- Clone or Download the Project.
+- Open an Existing Project and select the project folder in Andriod Studio.
+- Sync Dependencies
 
 # Run
-[commands]
+- Connect Device or Start Emulator
+- Run the Application
 
 ### Project Documentation
 For Software:
 
-# Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+# Screenshots 
+Development phase
+<img width="1919" height="1021" alt="Screenshot 2025-08-09 043807" src="https://github.com/user-attachments/assets/15f9bde0-4c60-4767-86e9-af518683967e" />
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
 
-# Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
+Testing of our app in Andriod Studio's Virtual emulator
+![app1](https://github.com/user-attachments/assets/2658b77d-51db-4f01-9335-589f6d323af5)
 
-For Hardware:
 
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
 
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
 
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
+Final UI in smartphone
+![app2jpg](https://github.com/user-attachments/assets/1cd8dba7-5039-42b2-a37f-95951d1edeb8)
 
-![Build](Add photos of build process here)
-*Explain the build steps*
 
-![Final](Add photo of final product here)
-*Explain the final build*
 
 ### Project Demo
 # Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
+https://drive.google.com/drive/folders/10KHbvm6a8HwS7qYZCH7ZcVmvfkNgECTp?usp=sharing
+- Demonstration of working of the app. 
 
-# Additional Demos
-[Add any extra demo materials/links]
+
 
 ## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+- Lekshmi Hari: Frontend & Backend
+- Arjun Biju: Backend & Git
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
