@@ -71,7 +71,9 @@ Testing of our app in Andriod Studio's Virtual emulator
 
 
 Final UI in smartphone
-![app2jpg](https://github.com/user-attachments/assets/1cd8dba7-5039-42b2-a37f-95951d1edeb8)
+- ![app2jpg](https://github.com/user-attachments/assets/1cd8dba7-5039-42b2-a37f-95951d1edeb8)
+  ![Incomingcall](https://github.com/user-attachments/assets/a7b39a08-2654-4712-8179-f2c7f88e8ed6)
+
 
 
 
